@@ -21,7 +21,9 @@ var urlsToCache = [
 ]
 
 if(workbox){  
-  workbox.precaching.precacheAndRoute(urlsToCache);
+  workbox.precaching.precacheAndRoute(urlsToCache, {
+  ignoreUrlParametersMatching: [/.*/]
+});
   workbox.routing.registerRoute(
     /.*(?:png|gif|jpg|jpeg|svg)$/,
     workbox.strategies.cacheFirst({
